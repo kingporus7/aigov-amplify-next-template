@@ -1,7 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { Auth } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
+import awsconfig from '../../src/config/amplify-config';
+
+// Initialize Amplify
+Amplify.configure(awsconfig);
 
 export default function SignUp() {
     const [email, setEmail] = useState('');
@@ -10,7 +14,7 @@ export default function SignUp() {
 
     const handleSignUp = async () => {
         try {
-            await Auth.signUp({
+            await Amplify.Auth.signUp({
                 username: email,
                 password,
                 attributes: { email }
