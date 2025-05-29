@@ -1,35 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { API } from 'aws-amplify';
 
 export default function Home() {
     const [todos, setTodos] = useState([]);
     const [newTodo, setNewTodo] = useState('');
 
     useEffect(() => {
-        fetchTodos();
+        // Placeholder for SageMaker API call
+        setTodos([{ text: 'App successfully hosted. Try creating a new todo.' }]);
     }, []);
 
-    const fetchTodos = async () => {
-        try {
-            const response = await API.get('SageMakerAPI', '/');
-            setTodos(response.data || []);
-        } catch (error) {
-            console.error('Error fetching todos:', error);
-        }
-    };
-
     const addTodo = async () => {
-        try {
-            const response = await API.post('SageMakerAPI', '/', {
-                body: { text: newTodo }
-            });
-            setTodos([...todos, response]);
-            setNewTodo('');
-        } catch (error) {
-            console.error('Error adding todo:', error);
-        }
+        setTodos([...todos, { text: newTodo }]);
+        setNewTodo('');
     };
 
     return (

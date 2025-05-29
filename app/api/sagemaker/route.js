@@ -1,16 +1,11 @@
-import { API } from 'aws-amplify';
+import { NextResponse } from 'next/server';
 
 export async function GET() {
     try {
-        const response = await API.get('SageMakerAPI', '/');
-        return new Response(JSON.stringify(response), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' }
-        });
+        // Placeholder for SageMaker API call
+        const response = { data: [] };
+        return NextResponse.json(response, { status: 200 });
     } catch (error) {
-        return new Response(JSON.stringify({ error: error.message }), {
-            status: 500,
-            headers: { 'Content-Type': 'application/json' }
-        });
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
