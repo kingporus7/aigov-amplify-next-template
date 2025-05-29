@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Amplify } from 'aws-amplify';
-import awsconfig from '../../src/config/amplify-config';
+import { Amplify, Auth } from 'aws-amplify';
+import awsconfig from '@/config/amplify-config';
 
 // Initialize Amplify
 Amplify.configure(awsconfig);
@@ -14,7 +14,7 @@ export default function SignIn() {
 
     const handleSignIn = async () => {
         try {
-            await Amplify.Auth.signIn(email, password);
+            await Auth.signIn(email, password);
             window.location.href = '/';
         } catch (err) {
             setError(err.message);
