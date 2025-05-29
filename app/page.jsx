@@ -7,7 +7,6 @@ export default function Home() {
     const [newTodo, setNewTodo] = useState('');
 
     useEffect(() => {
-        // Placeholder for SageMaker API call
         setTodos([{ text: 'App successfully hosted. Try creating a new todo.' }]);
     }, []);
 
