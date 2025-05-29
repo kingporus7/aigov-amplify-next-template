@@ -6,7 +6,7 @@ const client = new CognitoIdentityProviderClient({
 
 export async function signUp(email, password) {
     const command = new SignUpCommand({
-        ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID,
+        ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID, // Uses env variable
         Username: email,
         Password: password,
         UserAttributes: [{ Name: 'email', Value: email }]
@@ -17,7 +17,7 @@ export async function signUp(email, password) {
 export async function signIn(email, password) {
     const command = new InitiateAuthCommand({
         AuthFlow: 'USER_PASSWORD_AUTH',
-        ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID,
+        ClientId: process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID, // Uses env variable
         AuthParameters: {
             USERNAME: email,
             PASSWORD: password
